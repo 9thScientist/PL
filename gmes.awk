@@ -8,11 +8,11 @@ match($0, /<DATA_SAIDA>(.*)<\/DATA_SAIDA>/, m) {
 }
 
 match($0, /<IMPORTANCIA>(.*)<\/IMPORTANCIA>/, m) {
-    imp = m[1]
+    imp = normFloat(m[1])
 }
 
 match($0, /<TAXA_IVA>(.*)<\/TAXA_IVA>/, m) {
-    total[mes] += imp * m[1]
+    total[mes] += imp + imp * m[1] / 100
 }
 
 END {
@@ -23,4 +23,9 @@ END {
 function get_mes(date) {
     split(m[1], d, "-")
     return d[2]
+}
+
+function normFloat(float) {
+    sub(/,/, ".", float)
+    return float
 }
