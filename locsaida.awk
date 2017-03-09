@@ -3,7 +3,7 @@ BEGIN {
     PROCINFO["sorted_in"] = "@ind_str_asc";
 }
 
-match($0, /<SAIDA>([^>]*)<\/SAIDA>/, m) {
+match($0, /<SAIDA>(.*)<\/SAIDA>/, m) {
     !saida[m[1]]++;
 }
 
