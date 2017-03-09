@@ -1,3 +1,4 @@
+@include "lib.awk"
 BEGIN {
     PROCINFO["sorted_in"] = "@ind_str_asc"
     fmt = "%s -> %s\n"
@@ -17,15 +18,5 @@ match($0, /<TAXA_IVA>(.*)<\/TAXA_IVA>/, m) {
 
 END {
     for (i in total)
-        printf fmt, i, total[i]
-}
-
-function get_mes(date) {
-    split(m[1], d, "-")
-    return d[2]
-}
-
-function normFloat(float) {
-    sub(/,/, ".", float)
-    return float
+        printf fmt, i, total[i] > "pages/gmes.html"
 }
