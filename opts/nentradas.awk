@@ -1,7 +1,9 @@
 @include "lib.awk"
 BEGIN {
     PROCINFO["sorted_in"] = "@ind_str_desc";
-    fmt = "%s -> %s\n"
+    fmt = "<li><b>%s:</b> %s</li>\n"
+    nentradas_p = "pages/nentradas.html"
+    print "<p><i><a href='index.html'>Voltar</a></i></p>" > nentradas_p
 }
 
 match($0, /<DATA_ENTRADA>([^>]*)<\/DATA_ENTRADA>/, m) {
@@ -10,5 +12,5 @@ match($0, /<DATA_ENTRADA>([^>]*)<\/DATA_ENTRADA>/, m) {
 
 END {
     for (date in dates)
-        printf(fmt, normalize(date), dates[date]) > "pages/nentradas.html"
+        printf(fmt, normalize(date), dates[date]) > nentradas_p
 }

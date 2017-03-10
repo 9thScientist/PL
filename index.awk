@@ -19,5 +19,5 @@ BEGIN {
 
 function print_index() {
     for (i in opts)
-        printf (lnk, pth i ".html" , opts[i]) > "index.html"
+        printf (lnk, i ".html" , opts[i]) > "pages/index.html"
 }

@@ -2,6 +2,9 @@
 BEGIN {
     p = 0;
     PROCINFO["sorted_in"] = "@ind_str_asc";
+    li = "<li>%s</li>\n"
+    locsaida_p = "pages/locsaida.html"
+    print "<p><i><a href='index.html'>Voltar</a></i></p>" > locsaida_p
 }
 
 match($0, /<SAIDA>(.*)<\/SAIDA>/, m) {
@@ -10,5 +13,5 @@ match($0, /<SAIDA>(.*)<\/SAIDA>/, m) {
 
 END {
     for (loc in saida)
-        print loc > "pages/locsaida.html"
+        printf li, loc > "pages/locsaida.html"
 }

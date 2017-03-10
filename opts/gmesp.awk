@@ -1,7 +1,9 @@
 @include "lib.awk"
 BEGIN {
     PROCINFO["sorted_in"] = "@ind_str_asc"
-    fmt = "%s -> %s\n"
+    fmt = "<li><b>%s:</b> %s</li>\n"
+    gmesp_p = "pages/gmesp.html"
+    print "<p><i><a href='index.html'>Voltar</a></i></p>" > gmesp_p
 }
 
 match($0, /<DATA_SAIDA>(.*)<\/DATA_SAIDA>/, m) {
@@ -17,11 +19,11 @@ match($0, /<TAXA_IVA>(.*)<\/TAXA_IVA>/, m) {
 }
 
 match($0, /<TIPO>(.*)<\/TIPO>/, m) && tolower(m[1]) == "parques de estacionamento" {
-    total[mes] += imp + imp * (iva / 100);
+    totalp[mes] += imp + imp * (iva / 100);
 }
 
 
 END {
-    for (i in total)
-        printf fmt, i, total[i] > "pages/gmesp.html"
+    for (i in totalp)
+        printf fmt, meshr(i), totalp[i] > "pages/gmesp.html"
 }
