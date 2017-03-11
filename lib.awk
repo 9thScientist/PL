@@ -12,7 +12,7 @@ function normalize(date) {
 }
 
 function get_mes(date) {
-    split(m[1], d, "-")
+    split(date, d, "-")
     return d[2]
 }
 
