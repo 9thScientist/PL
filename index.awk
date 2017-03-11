@@ -5,19 +5,37 @@
 @include "opts/gmesp.awk"
 
 BEGIN {
-    opts["nentradas"] = "Calcular o número de 'entradas' em cada dia do mês"
-    opts["locsaida"] = "Escrever a lista de locaisde 'saída'"
-    opts["gmes"] = "Calcular o total gasto no mês"
-    opts["gmesp"] = "Calcular o total gasto no mês apenas em 'parques'"
-
-    lnk = "<li><a href=%s>%s</a></li>"
-    pth = "pages/"
+    opts["nentradas"] = "Número de entradas ao longo do mês"
+    opts["locsaida"] = "Lista de locais de saída"
+    opts["gmes"] = "Total gasto durante o mês"
+    opts["gmesp"] = "Total gasto em parques durante mês apenas"
 
     print_index()
+    print_css()
 }
 
 
 function print_index() {
+    header = "<head><meta charset='UTF-8'/></meta></head>"
+    link = "<li><a href=%s>%s</a></li>"
+
+    print "<html>" header "<body>" > "pages/index.html"
+
     for (i in opts)
-        printf (lnk, i ".html" , opts[i]) > "pages/index.html"
+        printf (link, i ".html" , opts[i]) > "pages/index.html"
+
+    print "</body></html>" > "pages/index.html"
+}
+
+function print_css() {
+    print"\
+.bar {\
+  font: 10px sans-serif;\
+  background-color: steelblue;\
+  text-align: right;\
+  display: inline-block;\
+  padding: 3px;\
+  margin: 1px;\
+  color: white;\
+}" > "pages/all.css"
 }

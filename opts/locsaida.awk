@@ -1,17 +1,25 @@
 @include "lib.awk"
+
 BEGIN {
-    p = 0;
     PROCINFO["sorted_in"] = "@ind_str_asc";
-    li = "<li>%s</li>\n"
-    locsaida_p = "pages/locsaida.html"
-    print "<p><i><a href='index.html'>Voltar</a></i></p>" > locsaida_p
+
+    header = "<head><meta charset='UTF-8'/><link rel='stylesheet' href='all.css'/></head>"
+    back_link = "<p><i><a href='index.html'>Voltar</a></i></p>"
+
+    locsaida_path = "pages/locsaida.html"
+    locsaida_li = "<li>%s</li>\n"
+    locsaida_title = "<h1>Locais de saída</h1>"
+
+    print "<html>" header "<body>" locsaida_title "<ul>" > locsaida_path
 }
 
 match($0, /<SAIDA>(.*)<\/SAIDA>/, m) {
-    !saida[m[1]]++;
+    !saidas[m[1]]++;
 }
 
 END {
-    for (loc in saida)
-        printf li, loc > "pages/locsaida.html"
+    for (s in saidas)
+        printf (locsaida_li, s) > locsaida_path
+
+    print "</ul>" back_link "</body></html>" > locsaida_path
 }
