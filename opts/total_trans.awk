@@ -20,6 +20,11 @@ match($0, /<(.*)>(.*)<\/.*>/, m) && trans {
     trans_info[++p] = m[2]
 }
 
+match($0, /<.*\/>/) && trans {
+    trans_info[++p] = ""
+}
+
+
 match($0, /<\/TRANSACCAO>/, m) && trans {
     PROCINFO["sorted_in"] = "@ind_num_asc"
     for (desc in trans_info)
