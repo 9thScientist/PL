@@ -9,7 +9,7 @@ BEGIN {
     opts["nentradas"] = "Número de entradas ao longo do mês"
     opts["locsaida"] = "Lista de locais de saída"
     opts["gmes"] = "Total gasto durante o mês"
-    opts["gmesp"] = "Total gasto em parques durante mês apenas"
+    opts["gmesp"] = "Total gasto em parques"
     opts["total_trans"] = "Lista total de transferências"
 
     print_index()

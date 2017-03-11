@@ -4,9 +4,8 @@ BEGIN {
 
     table_tr_3 = "<tr><td><b>%s:</b></td> <td> %s </td> <td> %s </td></tr>\n"
     table_tr_13 = "<tr> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> </tr>\n"
-    end_table = "</table>"
-    std_sorted_in = "@ind_str_asc"
   }
+
 function normalize(date) {
     split(date, d, "-", sp)
     return d[3] sp[1] d[2] sp[1] d[1]

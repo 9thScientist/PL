@@ -1,7 +1,6 @@
 @include "lib.awk"
 
 BEGIN {
-
     trans = 0
     total_trans_path = "pages/total_trans.html"
     total_trans_title = "<h1>Todas as transações</h1>"

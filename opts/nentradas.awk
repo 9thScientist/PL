@@ -3,9 +3,6 @@
 BEGIN {
     PROCINFO["sorted_in"] = "@ind_str_desc";
 
-    header = "<head><meta charset='UTF-8'/><link rel='stylesheet' href='all.css'/></head>"
-    back_link = "<p><i><a href='index.html'>Voltar</a></i></p>"
-
     nentradas_path = "pages/nentradas.html"
     entradas_fmt = "<tr><td>%s</td><td class='bar' style='width: %s'>%s</td>"
     entradas_title = "<h1>Número de entradas durante o mês</h1>"

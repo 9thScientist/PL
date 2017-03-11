@@ -1,10 +1,13 @@
 @include "lib.awk"
+
 BEGIN {
     PROCINFO["sorted_in"] = "@ind_str_asc"
-    gmes_table = "<table><tr><th>Mês</th> <th>Total</th> <th>Total IVA</th>"
-    gmes_p = "pages/gmes.html"
 
-    print gmes_table > gmes_p
+    gmes_table = "<table><tr><th>Mês</th> <th>Total</th> <th>Total IVA</th>"
+    gmes_path = "pages/gmes.html"
+    gmes_title = "<h1>Gastos ao longo do mês</h1>"
+
+    print "<html>" header "<body>" gmes_title gmes_table > gmes_path
 }
 
 match($0, /<DATA_SAIDA>(.*)<\/DATA_SAIDA>/, m) {
@@ -26,8 +29,7 @@ match($0, /<\/TRANSACCAO>/) {
 
 END {
     for (mes in total)
-        printf table_tr_3, meshr(mes), total[mes], total_iva[mes] > gmes_p
+        printf table_tr_3, meshr(mes), total[mes], total_iva[mes] > gmes_path
 
-    print end_table > gmes_p
-    print back_link > gmes_p
+    print "</table>" back_link "</body></html>" > gmes_path
 }
