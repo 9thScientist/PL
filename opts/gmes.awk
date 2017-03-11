@@ -4,8 +4,7 @@ BEGIN {
     gmes_table = "<table><tr><th>Mês</th> <th>Total</th> <th>Total IVA</th>"
     gmes_p = "pages/gmes.html"
 
-    print "<p><i><a href='index.html'>Voltar</a></i></p>" > gmes_p
-    print table > gmes_p
+    print gmes_table > gmes_p
 }
 
 match($0, /<DATA_SAIDA>(.*)<\/DATA_SAIDA>/, m) {
@@ -30,4 +29,5 @@ END {
         printf table_tr_3, meshr(mes), total[mes], total_iva[mes] > gmes_p
 
     print end_table > gmes_p
+    print back_link > gmes_p
 }

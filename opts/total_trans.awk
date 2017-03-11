@@ -16,7 +16,6 @@ match($0, /<TRANSACCAO>/, m) {
 }
 
 match($0, /<(.*)>(.*)<\/.*>/, m) && trans {
-    print p ": " m[2]
     trans_info[++p] = m[2]
 }
 
