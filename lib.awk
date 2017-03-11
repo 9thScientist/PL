@@ -1,4 +1,5 @@
 BEGIN {
+    system("mkdir pages");
     header = "<head><meta charset='UTF-8'/><link rel='stylesheet' href='all.css'/></head>"
     back_link = "<p><i><a href='index.html'>Voltar</a></i></p>"
 
