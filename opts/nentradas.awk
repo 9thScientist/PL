@@ -10,7 +10,7 @@ BEGIN {
     entradas_fmt = "<tr><td>%s</td><td class='bar' style='width: %s'>%s</td>"
     entradas_title = "<h1>Número de entradas durante o mês</h1>"
 
-    print "<html>" header "<body>" title "<table>" > nentradas_path
+    print "<html>" header "<body>" entradas_title "<table>" > nentradas_path
 }
 
 match($0, /<DATA_ENTRADA>([^>]*)<\/DATA_ENTRADA>/, m) {
