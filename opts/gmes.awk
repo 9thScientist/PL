@@ -1,9 +1,13 @@
 @include "lib.awk"
 BEGIN {
     PROCINFO["sorted_in"] = "@ind_str_asc"
-    fmt = "<li><b>%s:</b> %s</li>\n"
+    table = "<table><tr><th>Mês</th> <th>Total</th> <th>Total IVA</th>"
+    end_table = "</table>"
+    fmt = "<tr><td><b>%s:</b></td> <td> %s </td> <td> %s </td></tr>\n"
     gmes_p = "pages/gmes.html"
+
     print "<p><i><a href='index.html'>Voltar</a></i></p>" > gmes_p
+    print table > gmes_p
 }
 
 match($0, /<DATA_SAIDA>(.*)<\/DATA_SAIDA>/, m) {
@@ -19,10 +23,13 @@ match($0, /<TAXA_IVA>(.*)<\/TAXA_IVA>/, m) {
 }
 
 match($0, /<\/TRANSACCAO>/) {
-    total[mes] += imp + imp * iva / 100
+    total[mes] += imp
+    total_iva[mes] += imp * ("0." iva)
 }
 
 END {
-    for (i in total)
-        printf fmt, meshr(i), total[i] > gmes_p
+    for (mes in total)
+        printf fmt, meshr(mes), total[mes], total_iva[mes] > gmes_p
+
+    print end_table > gmes_p
 }
