@@ -3,12 +3,14 @@
 @include "opts/locsaida.awk"
 @include "opts/gmes.awk"
 @include "opts/gmesp.awk"
+@include "opts/total_trans.awk"
 
 BEGIN {
     opts["nentradas"] = "Número de entradas ao longo do mês"
     opts["locsaida"] = "Lista de locais de saída"
     opts["gmes"] = "Total gasto durante o mês"
     opts["gmesp"] = "Total gasto em parques durante mês apenas"
+    opts["total_trans"] = "Lista total de transferências"
 
     print_index()
     print_css()
