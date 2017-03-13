@@ -1,7 +1,6 @@
 @include "lib.awk"
 
 BEGIN {
-    PROCINFO["sorted_in"] = "@ind_str_desc";
 
     nentradas_path = "pages/nentradas.html"
     entradas_fmt = "<tr><td>%s</td><td class='bar' style='width: %s'>%s</td>"
@@ -15,8 +14,12 @@ match($0, /<DATA_ENTRADA>([^>]*)<\/DATA_ENTRADA>/, m) {
 }
 
 END {
+    PROCINFO["sorted_in"] = "@ind_str_desc"
+
     for (date in dates)
         printf(entradas_fmt, normalize(date), dates[date]*25, dates[date]) > nentradas_path
 
     print "</table>" back_link "</body></html>" > nentradas_path
+
+    PROCINFO["sorted_in"] = std_sorted_in
 }

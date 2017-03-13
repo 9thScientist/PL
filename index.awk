@@ -7,6 +7,8 @@
 @include "opts/total_trans.awk"
 
 BEGIN {
+    PROCINFO["sorted_in"] = std_sorted_in
+
     opts["nentradas"] = "Número de entradas ao longo do mês"
     opts["locsaida"] = "Lista de locais de saída"
     opts["gmes"] = "Total gasto durante o mês"

@@ -1,8 +1,6 @@
 @include "lib.awk"
 
 BEGIN {
-    PROCINFO["sorted_in"] = "@ind_str_asc"
-
     gmes_table = "<table><tr><th>Mês</th> <th>Total</th> <th>Total IVA</th>"
     gmes_path = "pages/gmes.html"
     gmes_title = "<h1>Gastos ao longo do mês</h1>"

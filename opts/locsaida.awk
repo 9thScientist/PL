@@ -1,8 +1,6 @@
 @include "lib.awk"
 
 BEGIN {
-    PROCINFO["sorted_in"] = "@ind_str_asc";
-
     locsaida_path = "pages/locsaida.html"
     locsaida_li = "<li>%s</li>\n"
     locsaida_title = "<h1>Locais de saída</h1>"

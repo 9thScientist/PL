@@ -1,8 +1,6 @@
 @include "lib.awk"
 
 BEGIN {
-    PROCINFO["sorted_in"] = "@ind_str_asc"
-
     gmesp_path = "pages/gmesp.html"
     gmesp_title = "<h1>Gasto em parques</h1>"
 

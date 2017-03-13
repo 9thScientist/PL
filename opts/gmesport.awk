@@ -1,8 +1,6 @@
 @include "lib.awk"
 
 BEGIN {
-    PROCINFO["sorted_in"] = "@ind_str_asc"
-
     gmesport_path = "pages/gmesport.html"
     gmesport_title = "<h1>Gasto em portagens</h1>"
 

@@ -2,8 +2,6 @@ cliente
 @include "lib.awk"
 
 BEGIN {
-    PROCINFO["sorted_in"] = "@ind_str_asc"
-
     cliente_path = "pages/cliente.html"
     cliente_title = "<h1>Informação do cliente</h1>"
 
