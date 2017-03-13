@@ -1,5 +1,6 @@
 #!/usr/bin/gawk -f
 @include "opts/nentradas.awk"
+@include "opts/cliente.awk"
 @include "opts/locsaida.awk"
 @include "opts/gmes.awk"
 @include "opts/gmesp.awk"
@@ -15,6 +16,7 @@ BEGIN {
     opts["gmesp"] = "Total gasto em parques"
     opts["gmesport"] = "Total gasto em portagens"
     opts["total_trans"] = "Lista total de transferências"
+    opts["cliente"] = "Informações do Cliente"
 
     print_index()
     print_css()
